@@ -1,0 +1,197 @@
+.sidebar {
+    width: 230px;
+    min-height: 100vh;
+    background-color: #2a3f54;
+    color: white;
+
+    &-title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-weight: 400;
+        font-size: 22px;
+        width: 100%;
+        color: #ecf0f1;
+        display: flex;
+        align-items: center;
+        height: 55px;
+        margin: 0;
+        padding-left: 10px;
+
+        &-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            padding: 5px 6px;
+            border-radius: 50px;
+            border: 1px solid white;
+            margin-right: 5px;
+        }
+    }
+    &-profile {
+        display: flex;
+        align-items: center;
+        padding: 25px 10px 10px;
+    }
+    &-profile-pic {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 4px solid white;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &-profile-info {
+        margin-left: 25px;
+        span {
+            font-size: 13px;
+            line-height: 30px;
+            color: #bab8b8;
+        }
+        h2 {
+            font-size: 14px;
+            color: #ecf0f1;
+            margin: 0;
+            font-weight: 300;
+        }
+    }
+    &-menu {
+        margin-top: 15px;
+    }
+    &-general {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: bold;
+        text-shadow: 1px 1px #000;
+        letter-spacing: 0.5px;
+        color: white;
+        padding-left: 23px;
+    }
+    // sidebar menu multiLevel
+    &-item {
+        padding: 0;
+        margin: 0 0 6px;
+        list-style-type: none;
+        cursor: pointer;
+        position: relative;
+        &__parent {
+            display: flex;
+            padding: 10px;
+            transition: all 0.25s linear;
+
+            span {
+                margin-right: 10px;
+            }
+            p,
+            span {
+                user-select: none;
+                pointer-events: none;
+            }
+            &:hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+        }
+        &__child {
+            position: relative;
+            background-color: #2a3f54;
+            transition: all 0.25s linear;
+
+            margin: 0;
+            &::before {
+                background: #425668;
+                bottom: auto;
+                content: "";
+                height: 8px;
+                left: 22px;
+                margin-top: 20px;
+                position: absolute;
+                transform: translateX(-50%);
+                right: auto;
+                width: 8px;
+                z-index: 1;
+                border-radius: 50%;
+            }
+
+            &::after {
+                border-left: 1px solid #425668;
+                bottom: 0;
+                content: "";
+                left: 22px;
+                position: absolute;
+                top: 0;
+            }
+            &:last-child::after {
+                bottom: 50%;
+            }
+            .sidebar-item__parent {
+                padding-left: 30px;
+            }
+        }
+    }
+    &-item-chevron {
+        margin-right: 15px;
+        margin-left: auto;
+    }
+    &-menu__child {
+        max-height: 0;
+        transition: max-height 0.35s ease-out;
+        overflow: hidden;
+    }
+    &-item__parent.open {
+        background: linear-gradient(#334556, #2c4257), #2a3f54;
+        box-shadow: rgb(0 0 0 / 25%) 0 1px 0, inset rgb(255 255 255 / 16%) 0 1px 0;
+    }
+    &-item__parent.open + .sidebar-menu__child {
+        max-height: 500px;
+        transition: max-height 0.5s ease-in;
+    }
+
+    //toggle sidebar
+    // &.open .sidebar-title-name {
+    //     display: none;
+    // }
+    &.open {
+        width: 70px;
+    }
+    &.open > &-title {
+        padding-left: 0;
+        .sidebar-title-name {
+            display: none;
+        }
+        .sidebar-title-icon {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 27px;
+            margin: 0 auto;
+        }
+    }
+    &.open .sidebar-profile,
+    &.open .sidebar-general,
+    &.open .sidebar-item-chevron {
+        display: none;
+    }
+    &.open .sidebar-item__parent {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        p {
+            font-size: 10px;
+        }
+        span {
+            margin-right: 0;
+            font-size: 25px;
+        }
+    }
+    &.open .sidebar-menu__child {
+        width: 210px;
+        position: absolute;
+        left: 100%;
+        top: 0;
+    }
+}
