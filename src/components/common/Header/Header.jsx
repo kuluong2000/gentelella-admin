@@ -6,11 +6,14 @@ import { faBars, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import Tippy from "@tippyjs/react/headless";
 import { hideSidebar, showSidebar } from "../../../redux/action";
+import { Routes, Route, Link } from "react-router-dom";
 //import comp
 
 import { Wrapper } from "../../Layout/Popper";
 import Notification from "../../Layout/Popper/Menu/Notification/Notification";
 import Menu from "../../Layout/Popper/Menu/Menu/Menu";
+import routerPublic from "../../../router";
+
 //import css
 
 import styles from "./header.module.scss";
@@ -25,7 +28,7 @@ export default function Header() {
   useEffect(() => {
     setSidebarToggle(toggleSidebar);
   }, [toggleSidebar]);
-  console.log(sidebarToggle);
+
   const handleClick = () => {
     if (sidebarToggle === "") {
       dispatch(showSidebar("open"));

@@ -64,7 +64,12 @@
 .menu-item {
     list-style: none;
     position: relative;
+    &-link {
+        display: inline-block;
+        width: 100%;
+    }
 }
+
 .badge {
     background-color: #e74c3c;
     color: white;

@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import styles from "../menu.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles);
 export default function Menu() {
   return (
@@ -20,12 +21,12 @@ export default function Menu() {
         <a href="#">Help</a>
       </li>
       <li className={cx("menu-item")}>
-        <a href="#">
+        <Link to="/login" className={cx("menu-item-link")}>
           <span>Log out</span>
           <span className={cx("back")}>
             <FontAwesomeIcon icon={faArrowRightToBracket}></FontAwesomeIcon>
           </span>
-        </a>
+        </Link>
       </li>
     </ul>
   );

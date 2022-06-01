@@ -57,8 +57,15 @@ export default function SideBar() {
   ];
   // logic
   const handleClick = (e) => {
-    e.target.classList.toggle(cx("open"));
-    console.log(e.target);
+    const parentNode = e.target.parentElement.parentNode;
+    const parentElement = e.target.parentElement;
+    parentElement.classList.toggle(cx("open"));
+    for (let item of parentNode.children) {
+      if (item.className.includes(cx("open"))) {
+        item.classList.remove(cx("open"));
+        parentElement.classList.add(cx("open"));
+      }
+    }
   };
   return (
     <div className={cx("sidebar", toggleSidebar)}>

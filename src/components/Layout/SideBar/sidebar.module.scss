@@ -146,7 +146,7 @@
         background: linear-gradient(#334556, #2c4257), #2a3f54;
         box-shadow: rgb(0 0 0 / 25%) 0 1px 0, inset rgb(255 255 255 / 16%) 0 1px 0;
     }
-    &-item__parent.open + .sidebar-menu__child {
+    &-item.open .sidebar-menu__child {
         max-height: 500px;
         transition: max-height 0.5s ease-in;
     }
